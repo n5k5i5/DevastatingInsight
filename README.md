@@ -1,43 +1,81 @@
-# DevastatingInsight
+# DevastatingInsight: Debian Tabanlı OSINT, SOCMINT ve WEBINT Dağıtımı
 
-Proje Açıklaması
+**DevastatingInsight**, OSINT (Açık Kaynak İstihbarat), SOCMINT (Sosyal Medya İstihbaratı) ve WEBINT (Web İstihbaratı) işlemleri için optimize edilmiş bir Debian tabanlı işletim sistemi dağıtımı sunmayı amaçlamaktadır. Dağıtım, bu alanlarda kullanılabilecek en iyi araçları içerir ve özel ihtiyaçlara göre özelleştirilebilir.
 
-DevastatingInsight, özelleştirilmiş bir Debian Live ISO dosyası oluşturmayı amaçlayan kapsamlı bir projedir. Bu proje, OSINT (Açık Kaynak İstihbarat), WEBINT (Web İstihbaratı), SOCMINT (Sosyal Medya İstihbaratı), adli bilişim ve pentest (penetrasyon testi) araçlarını içeren tam işlevsel bir Debian sistemi oluşturmayı hedefler. Proje, kullanıcı dostu bir yapılandırma script'i (setup.sh) ile birlikte gelir ve gerekli tüm araçları, ayarları ve özelleştirmeleri otomatik olarak içerir.
-Amacı ve Hedefleri
+## İçindekiler
+- [Özellikler](#özellikler)
+- [Kurulum](#kurulum)
+- [Kullanım](#kullanım)
+- [Araçlar](#araçlar)
+- [Yapılandırma](#yapılandırma)
+- [Güncellemeler ve Bakım](#güncellemeler-ve-bakım)
+- [Sıkça Sorulan Sorular (SSS)](#sıkça-sorulan-sorular-sss)
+- [Katkıda Bulunma](#katkıda-bulunma)
+- [Lisans](#lisans)
 
-DevastatingInsight projesi, aşağıdaki amaç ve hedeflerle geliştirilmiştir:
+## Özellikler
+- **OSINT Araçları:** Gelişmiş açık kaynak istihbarat araçlarıyla donatılmıştır.
+- **SOCMINT Araçları:** Sosyal medya platformlarından veri toplama ve analiz etme yetenekleri.
+- **WEBINT Araçları:** Web tabanlı veri toplama ve analiz araçları.
+- **Grafiksel Arayüz:** Kullanımı kolay ve kullanıcı dostu grafiksel arayüz.
+- **Modüler Yapı:** Yüksek özelleştirme imkanı sunar, kullanıcıların ihtiyaçlarına göre modüller eklenebilir veya çıkarılabilir.
+- **Güvenlik ve Performans:** Dağıtım, güvenlik ve performans açısından optimize edilmiştir.
+- **Otomatik Güncellemeler:** Düzenli olarak otomatik güncellemelerle sistemin güncel ve güvenli kalması sağlanır.
+- **Kapsamlı Dokümantasyon:** Kullanıcıların araçları ve dağıtımı etkili bir şekilde kullanabilmeleri için kapsamlı dokümantasyon.
+- **Topluluk Desteği:** Kullanıcılar ve geliştiriciler için bir destek topluluğu.
+- **Çoklu Dil Desteği:** Farklı dillerde kullanılabilir.
+- **Eğitim ve Öğretim Materyalleri:** Yeni başlayanlar için eğitim ve öğretim materyalleri.
 
-    Kapsamlı Araç Seti: Güvenlik araştırmacıları, adli bilişim uzmanları ve istihbarat analistleri için ihtiyaç duyulan çeşitli araçları içeren bir sistem oluşturmak.
+## Araçlar
+**DevastatingInsight** dağıtımında yer alan bazı araçlar ve işlevleri:
 
-    Kullanıcı Dostu: Kurulumu ve kullanımı kolay, önceden yapılandırılmış bir Debian Live ISO sağlamak.
+- **Recon-ng:** Güçlü bir OSINT çerçevesi, modüler yapısı ile veri toplama, analiz ve raporlama yapar.
+- **TheHarvester:** E-posta, domain, IP ve isim bilgilerini çeşitli kaynaklardan toplar.
+- **Maltego:** Görsel bağlantı ve ilişki analizi yaparak, karmaşık veri kümelerini görselleştirir.
+- **SpiderFoot:** OSINT otomasyon aracı, IP adresleri, domainler, e-postalar ve daha fazlası hakkında bilgi toplar.
+- **Twint:** Twitter verilerini toplama ve analiz etme aracı, API kullanmadan çalışır.
+- **Metasploit Framework:** Pentest ve güvenlik araştırmaları için güçlü bir araç seti sunar.
+- **Wireshark:** Ağ trafiği analiz aracı, paket yakalama ve detaylı analiz yapar.
+- **John the Ripper:** Parola kırma aracı, zayıf parolaları tespit eder.
+- **Hydra:** Parola kırma ve kimlik doğrulama aracı, çeşitli protokoller üzerinde brute force saldırıları yapar.
+- **Nmap:** Ağ keşfi ve güvenlik taraması yaparak, açık portları ve hizmetleri tespit eder.
+- **SQLmap:** SQL enjeksiyon açıklarını bulma ve kullanma aracı.
+- **Burp Suite:** Web uygulama güvenlik testi platformu, çeşitli güvenlik testlerini otomatikleştirir.
+- **Nikto:** Web sunucusu güvenlik tarama aracı, bilinen güvenlik açıklarını tespit eder.
+- **OpenVAS:** Güvenlik zafiyeti tarama aracı, ağ güvenliği değerlendirmesi yapar.
+- **ExifTool:** Medya dosyalarının meta verilerini okuma, yazma ve düzenleme aracı.
+- **OSINT Framework:** Farklı OSINT kaynaklarına erişim sağlayan web tabanlı bir araç.
+- **Censys:** İnternet varlıklarının keşfi ve analizi için kullanılan bir arama motoru aracı.
+- **Shodan:** İnternete bağlı cihazların keşfi ve analizi için kullanılan bir arama motoru.
+- **FOCA:** Belge meta verilerini analiz ederek, bilgi toplama işlemlerine yardımcı olur.
+- **SpiderFoot HX:** Daha gelişmiş özelliklere sahip bir OSINT otomasyon aracı.
+- **Sublist3r:** Alt domainleri toplama aracı, çeşitli kaynaklardan alt domainleri tespit eder.
+- **Amass:** DNS keşfi ve dış istihbarat toplama aracı.
+- **Social-Engineer Toolkit (SET):** Sosyal mühendislik saldırılarını simüle etme aracı.
+- **Cuckoo Sandbox:** Zararlı yazılım analiz ortamı, şüpheli dosyaları ve URL'leri analiz eder.
+- **Yara:** Zararlı yazılım tespiti ve analizinde kullanılan bir araç.
+- **Radare2:** Tersine mühendislik aracı, binary dosyalarını analiz eder.
+- **Ghidra:** NSA tarafından geliştirilen bir tersine mühendislik aracı.
+- **Aircrack-ng:** Kablosuz ağlar için güvenlik değerlendirme araçları seti.
 
-    Esneklik ve Özelleştirme: Kullanıcıların ihtiyaçlarına göre özelleştirilebilir bir yapı sunmak.
 
-    Eğitim ve Araştırma: Güvenlik, adli bilişim ve istihbarat alanlarında eğitim ve araştırma yapmayı kolaylaştırmak.
+## Kurulum
+Aşağıdaki adımları izleyerek **DevastatingInsight** dağıtımını kurabilirsiniz:
 
-Temel Özellikler
+1. **Gereksinimler:**
+    - En az 4 GB RAM
+    - 20 GB boş disk alanı
+    - Debian tabanlı bir işletim sistemi
 
-DevastatingInsight projesi, aşağıdaki temel özelliklere sahiptir:
+2. **Yükleme Adımları:**
+    ```bash
+    git clone https://github.com/n5k5i5/DevastatingInsight.git
+    cd DevastatingInsight
+    sudo ./install.sh
+    ```
 
-    Geniş Araç Desteği: Proje, OSINT, WEBINT, SOCMINT, adli bilişim ve pentest araçlarının kapsamlı bir listesini içerir.
+## Kullanım
+Kurulum tamamlandıktan sonra, aşağıdaki komutları kullanarak dağıtımı başlatabilirsiniz:
 
-    Özelleştirme: Kullanıcıların kendi ihtiyaçlarına göre ek araçlar, temalar ve ayarlar eklemesine olanak tanır.
-
-    Kullanıcı Dostu Arayüz: Kullanıcı dostu bir grafik arayüz sunarak, hem yeni başlayanlar hem de deneyimli kullanıcılar için kolaylık sağlar.
-
-    Otomatik Yapılandırma: Tüm gerekli ayarlar ve araçlar, 
-
-## Başlangıç
-Bu proje, Debian tabanlı bir sistemde çalıştırılmak üzere tasarlanmıştır. Projeyi kullanarak özelleştirilmiş bir Debian Live ISO dosyası oluşturmak için aşağıdaki adımları izleyin.
-
-### Gereksinimler
-- Debian tabanlı bir işletim sistemi
-- İnternet bağlantısı
-- `sudo` yetkileri
-
-### Kurulum ve Kullanım
-#### Adım 1: Projeyi Klonlama
-Projeyi klonlayarak çalışmaya başlayın:
-```sh
-git clone https://github.com/your-username/DevastatingInsight.git
-cd DevastatingInsight
+```bash
+osint-start
