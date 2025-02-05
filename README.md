@@ -1,7 +1,5 @@
 # DevastatingInsight
 
-# DevastatingInsight - 
-
 ## Proje Açıklaması
 **DevastatingInsight**, özelleştirilmiş bir Debian Live ISO dosyası oluşturmak için kullanılan bir projedir. Bu proje, OSINT, WEBINT, SOCMINT, adli bilişim ve pentest araçlarını içeren tam işlevsel bir Debian sistemi oluşturmayı amaçlamaktadır. Proje, kullanıcı dostu bir yapılandırma script'i (setup.sh) ile birlikte gelir ve gerekli tüm araçları ve ayarları otomatik olarak içerir.
 
