@@ -1,0 +1,66 @@
+#!/bin/bash
+
+# Scripti root olarak çalıştırmayı kontrol et
+if [ "$(id -u)" -ne 0 ]; then
+    echo "Lütfen bu scripti root olarak çalıştırın."
+    exit 1
+fi
+
+# Sistemdeki tüm "Debian" referanslarını "DevastatingInsight" ile değiştir
+declare -a FILES=(
+    "/etc/hostname"
+    "/etc/hosts"
+    "/etc/os-release"
+    "/usr/lib/os-release"
+    "/etc/issue"
+    "/etc/issue.net"
+    "/etc/apt/sources.list"
+    "/etc/default/grub"
+    "/var/lib/dpkg/status"
+    "/etc/lsb-release"
+    "/etc/adduser.conf"
+    "/etc/login.defs"
+    "/etc/mailname"
+    "/etc/profile.d/*.sh"
+    "/var/lib/systemd/"
+    "/etc/cron.daily/"
+    "/etc/logrotate.d/"
+    "/usr/share/applications/"
+    "/usr/share/mime/"
+    "/etc/skel/"
+    "/boot/grub/grub.cfg"
+    "/usr/share/man/"
+    "/usr/share/info/"
+    "/usr/local/bin/"
+    "/usr/local/sbin/"
+    "/etc/pam.d/"
+    "/etc/cups/"
+    "/home/*/.bashrc"
+    "/home/*/.profile"
+    "/home/*/.bash_profile"
+    "/usr/share/locale/"
+    "/usr/share/keyrings/"
+    "/etc/network/"
+    "/var/log/"
+)
+
+for FILE in "${FILES[@]}"; do
+    if [ -f "$FILE" ]; then
+        sed -i 's/Debian/DevastatingInsight/g' "$FILE"
+        echo "Değiştirildi: $FILE"
+    elif [ -d "$FILE" ]; then
+        grep -rl "Debian" "$FILE" | xargs sed -i 's/Debian/DevastatingInsight/g'
+        echo "Dizin değiştirildi: $FILE"
+    fi
+done
+
+# GRUB yapılandırmasını güncelle
+update-grub
+
+# Hostname dosyasını güncelle
+echo "DevastatingInsight" > /etc/hostname
+
+# /etc/hosts dosyasını güncelle
+sed -i 's/127.0.1.1.*/127.0.1.1\tDevastatingInsight/' /etc/hosts
+
+echo "Tüm 'Debian' referansları 'DevastatingInsight' olarak değiştirildi."
